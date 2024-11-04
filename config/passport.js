@@ -17,7 +17,7 @@ passport.use(
 		{
 			clientID: process.env.CLIENT_ID,
 			clientSecret: process.env.CLIENT_SECRET,
-			callbackURL: "http://localhost:3001/auth/callback",
+			callbackURL: "https://recipe-finder-beige-three.vercel.app/auth/callback",
 			passReqToCallback: true,
 		},
 		function (request, accessToken, refreshToken, profile, done) {
