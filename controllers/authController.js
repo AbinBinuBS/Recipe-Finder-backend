@@ -1,25 +1,13 @@
-import passportAuth from "../config/passport.js";
-import axios from 'axios';
-
-export const googleAuth = passportAuth.authenticate("google", {
-	scope: ["email", "profile"],
-});
-
-export const googleAuthCallback = passportAuth.authenticate("google", {
-	successRedirect: "/auth/callback/success",
-	failureRedirect: "/auth/callback/failure",
-});
-
 export const authSuccess = async (req, res) => {
 	if (!req.user) {
 		return res.redirect("/auth/callback/failure");
 	}
 	try {
 		const email = req.user.email;
-		const name = req.user.displayName
+		const name = req.user.displayName;
 		const checkMailResponse = await axios.post(
 			"https://recipe-finder-backend-idhn.onrender.com/api/checkMail",
-			{ email ,name}
+			{ email, name }
 		);
 
 		if (checkMailResponse.data.emailExists) {
@@ -42,11 +30,7 @@ export const authSuccess = async (req, res) => {
 			}
 		}
 	} catch (error) {
-		console.error("Error in checking mail for Google auth:", error);
+		console.error("Error in checking mail for Google auth:", error.response ? error.response.data : error);
 		res.redirect("/auth/callback/failure");
 	}
-};
-
-export const authFailure = (req, res) => {
-	res.redirect("https://recipe-finder-beige-three.vercel.app");
 };
