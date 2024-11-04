@@ -159,6 +159,7 @@ export const removeLikedRecipe = async (req, res) => {
 		const newRefreshToken = generateRefreshToken(userPayload);
 		return res.status(200).json({ accessToken: newAccessToken, refreshToken: newRefreshToken });
 	} catch (error) {
+    console.log(error.message)
 		return res.status(500).json({ message: "Internal Server Error" });
 	}
 };
