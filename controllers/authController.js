@@ -18,7 +18,7 @@ export const authSuccess = async (req, res) => {
 		const email = req.user.email;
 		const name = req.user.displayName
 		const checkMailResponse = await axios.post(
-			"http://localhost:3001/api/checkMail",
+			"https://recipe-finder-backend-idhn.onrender.com/api/checkMail",
 			{ email ,name}
 		);
 
@@ -30,7 +30,7 @@ export const authSuccess = async (req, res) => {
 		} else {
 			const userName = req.user.displayName;
 			const storeMail = await axios.post(
-				"http://localhost:3001/api/mentees/googleRegister",
+				"https://recipe-finder-backend-idhn.onrender.com/api/mentees/googleRegister",
 				{ userName, password: "123456", email }
 			);
 
