@@ -17,7 +17,7 @@ passport.use(
 		{
 			clientID: process.env.CLIENT_ID,
 			clientSecret: process.env.CLIENT_SECRET,
-			callbackURL: "https://recipe-finder-backend-idhn.onrender.com/auth/callback",
+			callbackURL: "https://recipe-finder-backend-gm5m.onrender.com/auth/callback",
 			passReqToCallback: true,
 		},
 		function (request, accessToken, refreshToken, profile, done) {
